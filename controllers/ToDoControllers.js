@@ -1,17 +1,22 @@
-
+// controllers/ToDoControllers.js
 const ToDoModel = require("../models/ToDoModel");
 
 module.exports.getToDO = async (req, res) => {
-  const toDo = await ToDoModel.find();
-  res.status(200).json(todos);
+  try {
+    const todos = await ToDoModel.find();  // Fixed variable name from 'toDo' to 'todos'
+    res.status(200).json(todos);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports.saveToDO = async (req, res) => {
-  const { text } = req.body;
-  ToDoModel.create({ text }).then((data) => {
-    console.log("add successfully");
-    console.log(data);
-    res.send(data);
-  });
-  res.send(toDo);
+  try {
+    const { text } = req.body;
+    const newTodo = await ToDoModel.create({ text });
+    console.log("Added successfully");
+    res.status(201).json(newTodo);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
