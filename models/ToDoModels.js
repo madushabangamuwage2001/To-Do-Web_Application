@@ -1,7 +1,8 @@
+// models/ToDoModel.js
 const mongoose = require("mongoose");
 
 const ToDoSchema = new mongoose.Schema({
-  task: {
+  text: {  // Changed from 'task' to match your controller
     type: String,
     required: true,
   },
@@ -11,6 +12,4 @@ const ToDoSchema = new mongoose.Schema({
   },
 });
 
-const ToDoModel = mongoose.model("ToDo", ToDoSchema);
-
-module.exports = ToDoModel;
+module.exports = mongoose.model("ToDo", ToDoSchema);
