@@ -1,23 +1,23 @@
-// server.js
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require('cors');
-const router = require("./routes/ToDoRoute");  // Updated path
-require("dotenv").config();
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require("cors")
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const routes = require('./routes/ToDoRoutes')
 
-app.use(express.json());
-app.use(cors());
+require('dotenv').config()
 
-console.log("MongoDB URI:", process.env.MONGODB_URL);
+const app = express()
+const PORT = process.env.port || 5000
+
+app.use(express.json())
+app.use(cors())
 
 mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log(err));
+    .connect(process.env.MONGODB_URL)
+    .then(()=> console.log("connecte to mongoDB...."))
+    .catch((err)=> console.log(err))
+    
+    app.use(routes)
 
-app.use(router);
-
-app.listen(PORT, () => console.log(`Listening on: ${PORT}`));
+app.listen(PORT, () =>  console.log(`Listening on : ${PORT}`))
+                                                                                                                              

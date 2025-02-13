@@ -1,17 +1,11 @@
-// models/ToDoModel.js
-const ToDoModel = require("../models/ToDoModel"); // Match this with function usage
+const { text } = require('express')
+const mongoose = require('mongoose')
 
-const mongoose = require("mongoose");
+const todoSchema = new mongoose.Schema({
+    text:{
+        type: String,
+        require:true
+    }
+})
 
-const ToDoSchema = new mongoose.Schema({
-  text: {  // Changed from 'task' to match your controller
-    type: String,
-    required: true,
-  },
-  completed: {
-    type: Boolean,
-    default: false,
-  },
-});
-
-module.exports = mongoose.model("ToDo", ToDoSchema);
+module.exports = mongoose.model('ToDo', todoSchema)
