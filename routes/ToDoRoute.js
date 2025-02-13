@@ -1,11 +1,13 @@
-// routes/ToDoRoute.js
-const express = require("express");
-const { getToDO, saveToDO, updateToDO, deleteToDO } = require("../controllers/ToDoControllers");
-const router = express.Router();
+const{Router} = require("express");
+const { getToDo, saveToDo, updateToDo, deleteToDo } = require("../controlers/Todocontroler");
 
-router.get("/", getToDO);
-router.post("/save", saveToDO);  
-router.post("/update", updateToDO);
-router.post("/delete", deleteToDO);
+const router = Router()
+
+
+router.get('/',getToDo)
+router.post('/save',saveToDo)
+router.post('/update',updateToDo)
+router.post('/delete',deleteToDo)
+
 
 module.exports = router;
