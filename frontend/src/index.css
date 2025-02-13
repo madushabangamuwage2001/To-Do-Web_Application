@@ -44,5 +44,27 @@ input{
   border: none;
   cursor: pointer;
 }
+.todo{
+  position: relative;
+  margin-top: 1rem;
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  border-radius: 5px ;
+
+}
+.icons{
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  gap: 0.5rem;
+  transform: translateY(-50%);
+  display:flex;
+  justify-content: center;
+}
+.icon{
+  cursor: pointer;
+  font-size: 20px;
+}
 
 
